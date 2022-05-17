@@ -1,8 +1,5 @@
 package com.deniskolmakov;
 
-import java.io.IOException;
-
-
 
 public enum Digit {
     I(1), II(2), III(3), IV(4), V(5), VI(6),
@@ -24,7 +21,7 @@ public enum Digit {
     XCI (91), XCII (92), XCIII (93), XCIV (94), XCV (95), XCVI (96),
     XCVII (97), XCVIII  (98), XCIX(99),  C(100);
 
-    private int translation;
+    private final int translation;
 
     Digit(int translation){
         this.translation = translation;
@@ -33,11 +30,9 @@ public enum Digit {
         return translation;
     }
 
-    public String getRome(int y){
-
-        return name();
-    }
+    
 }
+
 
 
 
