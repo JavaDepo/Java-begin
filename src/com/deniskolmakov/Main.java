@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         int a;
         int b;
         int e;
         String[] digit;
         String inExpress;
-        String [] operator = {"+", "-", "/", "*"};
+        String[] operator = {"+", "-", "/", "*"};
         int opIndex = 0;
         Scanner in = new Scanner(System.in);
         int opCount = 0;
@@ -22,14 +22,14 @@ public class Main {
         inExpress = in.next();
         //Находим и считаем операторы
         for (String x : operator) {
-            for (char c : inExpress.toCharArray()){
-                if (String.valueOf(c).hashCode() == x.hashCode()){
+            for (char c : inExpress.toCharArray()) {
+                if (String.valueOf(c).hashCode() == x.hashCode()) {
                     opCount++;
-               }
+                }
             }
         }
         //Убеждаемся что оператор только один
-        if (opCount > 1){
+        if (opCount > 1) {
             try {
                 throw new IOException();
             } catch (IOException y) {
@@ -38,7 +38,7 @@ public class Main {
             }
         }
         //Проверяем есть ли одобренный оператор
-        if (opCount < 1){
+        if (opCount < 1) {
             try {
                 throw new IOException();
             } catch (IOException y) {
@@ -47,9 +47,9 @@ public class Main {
             }
 
         }
-        for (String x : operator){
+        for (String x : operator) {
             opIndex = inExpress.indexOf(x);
-            if (opIndex != -1){
+            if (opIndex != -1) {
                 break;
             }
         }
@@ -65,24 +65,23 @@ public class Main {
                 b = romeDigit2.getDigit();
                 inLimiter(a, b);
                 e = a + b;
-                for (Digit r : Digit.values()){
+                for (Digit r : Digit.values()) {
                     int v = r.getDigit();
-                    if (v == e){
+                    if (v == e) {
                         romeAnswer = String.valueOf(r);
                         System.out.println(inExpress + '=' + romeAnswer);
                         break;
                     }
                 }
 
-            }
-            else if (!(containsRome(digit[0], digit[1]))) {
+            } else if (!(containsRome(digit[0], digit[1]))) {
                 try {
                     a = Integer.parseInt(digit[0]);
                     b = Integer.parseInt(digit[1]);
                     inLimiter(a, b);
                     e = a + b;
                     System.out.println(inExpress + '=' + e);
-                } catch (IllegalArgumentException y){
+                } catch (IllegalArgumentException y) {
                     try {
                         throw new IOException();
                     } catch (IOException p) {
@@ -106,7 +105,7 @@ public class Main {
                 b = romeDigit2.getDigit();
                 inLimiter(a, b);
                 e = a - b;
-                if (e < 0){
+                if (e < 0) {
                     try {
                         throw new IOException();
                     } catch (IOException p) {
@@ -115,7 +114,7 @@ public class Main {
                     }
 
                 }
-                if (e < 1){
+                if (e < 1) {
                     try {
                         throw new IOException();
                     } catch (IOException p) {
@@ -124,24 +123,23 @@ public class Main {
                     }
 
                 }
-                for (Digit r : Digit.values()){
+                for (Digit r : Digit.values()) {
                     int v = r.getDigit();
-                    if (v == e){
+                    if (v == e) {
                         romeAnswer = String.valueOf(r);
                         System.out.println(inExpress + '=' + romeAnswer);
                         break;
                     }
                 }
 
-            }
-            else if (!(containsRome(digit[0], digit[1]))) {
+            } else if (!(containsRome(digit[0], digit[1]))) {
                 try {
                     a = Integer.parseInt(digit[0]);
                     b = Integer.parseInt(digit[1]);
                     inLimiter(a, b);
                     e = a - b;
                     System.out.println(inExpress + '=' + e);
-                } catch (IllegalArgumentException y){
+                } catch (IllegalArgumentException y) {
                     try {
                         throw new IOException();
                     } catch (IOException p) {
@@ -166,24 +164,23 @@ public class Main {
                 inLimiter(a, b);
                 e = a * b;
 
-                for (Digit r : Digit.values()){
+                for (Digit r : Digit.values()) {
                     int v = r.getDigit();
-                    if (v == e){
+                    if (v == e) {
                         romeAnswer = String.valueOf(r);
                         System.out.println(inExpress + '=' + romeAnswer);
                         break;
                     }
                 }
 
-            }
-            else if (!(containsRome(digit[0], digit[1]))) {
+            } else if (!(containsRome(digit[0], digit[1]))) {
                 try {
                     a = Integer.parseInt(digit[0]);
                     b = Integer.parseInt(digit[1]);
                     inLimiter(a, b);
                     e = a * b;
                     System.out.println(inExpress + '=' + e);
-                } catch (IllegalArgumentException y){
+                } catch (IllegalArgumentException y) {
                     try {
                         throw new IOException();
                     } catch (IOException p) {
@@ -208,24 +205,23 @@ public class Main {
                 inLimiter(a, b);
                 e = a / b;
 
-                for (Digit r : Digit.values()){
+                for (Digit r : Digit.values()) {
                     int v = r.getDigit();
-                    if (v == e){
+                    if (v == e) {
                         romeAnswer = String.valueOf(r);
                         System.out.println(inExpress + '=' + romeAnswer);
                         break;
                     }
                 }
 
-            }
-            else if (!(containsRome(digit[0], digit[1]))) {
+            } else if (!(containsRome(digit[0], digit[1]))) {
                 try {
                     a = Integer.parseInt(digit[0]);
                     b = Integer.parseInt(digit[1]);
                     inLimiter(a, b);
                     e = a / b;
                     System.out.println(inExpress + '=' + e);
-                } catch (IllegalArgumentException y){
+                } catch (IllegalArgumentException y) {
                     try {
                         throw new IOException();
                     } catch (IOException p) {
@@ -238,20 +234,21 @@ public class Main {
         }
 
     }
+
     //Находим римские цифры, отсекаем использование разных систем счисления
-    public static boolean containsRome (String d1, String d2) {
+    public static boolean containsRome(String d1, String d2) {
         boolean rome0 = true;
         boolean rome1 = true;
         boolean ret;
         try {
             Digit.valueOf(d1);
-        } catch (IllegalArgumentException y){
-            rome0=false;
+        } catch (IllegalArgumentException y) {
+            rome0 = false;
         }
         try {
             Digit.valueOf(d2);
-        } catch (IllegalArgumentException y){
-            rome1=false;
+        } catch (IllegalArgumentException y) {
+            rome1 = false;
         }
         if (rome0 != rome1) {
             try {
@@ -261,23 +258,26 @@ public class Main {
                 System.exit(1);
             }
 
-            }
+        }
 
         ret = rome0 & rome1;
         return ret;
-}
+    }
+
     //Ограничитель входных операндов
-public static void inLimiter(int s, int n) throws IOException {
+    public static void inLimiter(int s, int n) {
 
-   if (s < 1 | s > 10 | n < 1 | n > 10){
-       try {
-           throw new IOException();
-       } catch (IOException p) {
-           System.out.println("throws Exception //На вход принимаются лишь числа от 1 до 10");
-           System.exit(1);
-       }
+        if (s < 1 | s > 10 | n < 1 | n > 10) {
+            try {
+                throw new IOException();
+            } catch (IOException p) {
+                System.out.println("throws Exception //На вход принимаются лишь числа от 1 до 10");
+                System.exit(1);
+            }
 
-   }
+
+        }
+    }
 }
-}
+
 
